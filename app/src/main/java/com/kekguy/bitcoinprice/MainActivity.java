@@ -93,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
         initChart();
         setInitGraphValues();
         loadPrice();
-        handler.postDelayed(runnable, 10000);
+        setPortfolio(100f);
+        handler.postDelayed(runnable, 3600000);
+        handler.postDelayed(r2, 100);
     }
 
     private Thread thread;
@@ -112,9 +114,32 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             loadPrice();
-            handler.postDelayed(this, 10000);
+            handler.postDelayed(this, 3600000);
         }
     };
+
+    private final Runnable r2 = new Runnable() {
+        @Override
+        public void run() {
+            bitcoinRef.orderBy("timestamp", Query.Direction.DESCENDING)
+                    .limit(1)
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @RequiresApi(api = Build.VERSION_CODES.N)
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                Bitcoin bitcoin = documentSnapshot.toObject(Bitcoin.class);
+                                setPortfolio(bitcoin.getLast());
+                                //addEntry();
+                            }
+                        }
+                    });
+            handler.postDelayed(this, 100);
+            //setPortfolio();
+        }
+    };
+
 
 
     private void initChart() {
@@ -162,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 set2 = createSetPredicted();
                 data.addDataSet(set);
                 data.addDataSet(set2);
+                data.addEntry(new Entry(set2.getEntryCount(), 0f), 1);
             }
             float asa = price;
             float asb = predicted;
@@ -286,6 +312,23 @@ public class MainActivity extends AppCompatActivity {
         Log.d("predicted", Float.toString(predicted));
         currentPrice.setText("$" + price);
         predictedPrice.setText("$" + predicted);
+//        ArrayList<String> res = dbHandler.readBitcoinData();
+//        if(res.get(0).equals("0")) {
+//            currentPorfolio.setText("Not Set");
+//            moneyText.setText("Please enter data from settings");
+//        }
+//        else {
+//            Float value = Float.parseFloat(res.get(0));
+//            value = value * price;
+//            currentPorfolio.setText("$" + value.toString());
+//            Float money = Float.parseFloat(res.get(1));
+//            Float percentage = (price/money) * 100;
+//            moneyText.setText("Total money invested: $" + res.get(1) + "\nProfits: " + percentage.toString() + "%");
+//        }
+    }
+
+    public void setPortfolio(float price) {
+
         ArrayList<String> res = dbHandler.readBitcoinData();
         if(res.get(0).equals("0")) {
             currentPorfolio.setText("Not Set");
@@ -299,7 +342,6 @@ public class MainActivity extends AppCompatActivity {
             Float percentage = (price/money) * 100;
             moneyText.setText("Total money invested: $" + res.get(1) + "\nProfits: " + percentage.toString() + "%");
         }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/drawable/bg_spark_line.xml" value="0.2703125" />
+        <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2703125" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/activity_details.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/activity_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/dashboard_item_2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/dashboard_item_3.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/dashboard_item_4.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/upadhyays/Desktop/Learnings/BitcoinPrice/app/src/main/res/layout/header.xml" value="0.13020833333333334" />
