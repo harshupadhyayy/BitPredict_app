@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "443657761091",
+    "firebase_url": "https://bitcoin-price-predictor-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bitcoin-price-predictor",
+    "storage_bucket": "bitcoin-price-predictor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443657761091:android:39d0a924ffd007d48f3ff6",
+        "android_client_info": {
+          "package_name": "com.kekguy.bitcoinprice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443657761091-q10r6i6o28nj050m5e1al3c18ko59lkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBNoAY7zECyOkT1qJqzJMB7eX7Kg5neSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443657761091-q10r6i6o28nj050m5e1al3c18ko59lkk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443657761091:android:4dab88a8c2669fc88f3ff6",
+        "android_client_info": {
+          "package_name": "com.kekguy.projectui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443657761091-q10r6i6o28nj050m5e1al3c18ko59lkk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBNoAY7zECyOkT1qJqzJMB7eX7Kg5neSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443657761091-q10r6i6o28nj050m5e1al3c18ko59lkk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
