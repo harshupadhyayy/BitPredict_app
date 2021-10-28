@@ -116,12 +116,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void setPorfollio() {
-
-    }
-
-
-
 
     private void initChart() {
         mChart.getDescription().setEnabled(false);
@@ -150,24 +144,29 @@ public class MainActivity extends AppCompatActivity {
         xl.setTextColor(ContextCompat.getColor(mChart.getContext(), R.color.off_white));
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setAxisMaximum(55000f);
-        leftAxis.setAxisMinimum(54000f);
+        leftAxis.setAxisMaximum(60000f);
+        leftAxis.setAxisMinimum(51000f);
         leftAxis.setDrawGridLines(false);
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
 
     }
-    private void addEntry(float price) {
+    private void addEntry(float price, float predicted) {
         LineData data = mChart.getData();
 
         if (data != null) {
             ILineDataSet set = data.getDataSetByIndex(0);
-            if (set == null) {
-                set = createSet();
+            ILineDataSet set2 = data.getDataSetByIndex(1);
+            if (set == null || set2 == null) {
+                set = createSetCurrent();
+                set2 = createSetPredicted();
                 data.addDataSet(set);
+                data.addDataSet(set2);
             }
             float asa = price;
+            float asb = predicted;
             data.addEntry(new Entry(set.getEntryCount(), asa), 0);
+            data.addEntry(new Entry(set2.getEntryCount(), asb), 1);
             data.notifyDataChanged();
 
             mChart.notifyDataSetChanged();
@@ -185,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private LineDataSet createSet() {
+    private LineDataSet createSetCurrent() {
 
         LineDataSet set = new LineDataSet(null, "Current Price");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
@@ -201,6 +200,33 @@ public class MainActivity extends AppCompatActivity {
 //        set.setMode(mode);
 
         set.setColor(ContextCompat.getColor(this, R.color.colorDark));
+        set.setValueTextColor(ContextCompat.getColor(this, R.color.black_75));
+        set.setDrawValues(false);
+        set.setLineWidth(3.0F);
+        set.setHighlightEnabled(true);
+        set.setDrawHighlightIndicators(false);
+        set.setDrawCircles(false);
+        set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        set.setDrawFilled(true);
+        set.setFillDrawable(ContextCompat.getDrawable(this, R.drawable.bg_spark_line));
+        return set;
+    }
+    private LineDataSet createSetPredicted() {
+
+        LineDataSet set = new LineDataSet(null, "Predicted Price");
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        set.setColor(ColorTemplate.getHoloBlue());
+//        set.setLineWidth(2f);
+//        set.setFillAlpha(65);
+//        set.setFillColor(ColorTemplate.getHoloBlue());
+//        set.setHighLightColor(Color.rgb(244, 117, 117));
+//        set.setValueTextColor(Color.WHITE);
+//        set.setValueTextSize(9f);
+//        set.setDrawValues(false);
+//        LineDataSet.Mode mode = LineDataSet.Mode.CUBIC_BEZIER;
+//        set.setMode(mode);
+
+        set.setColor(ContextCompat.getColor(this, R.color.colorLight));
         set.setValueTextColor(ContextCompat.getColor(this, R.color.black_75));
         set.setDrawValues(false);
         set.setLineWidth(3.0F);
@@ -244,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
                             Bitcoin bitcoin = documentSnapshot.toObject(Bitcoin.class);
                             Log.d("timestamp", bitcoin.getTimestamp());
                             Log.d("price", Float.toString(bitcoin.getLast()));
-                            addEntry(bitcoin.getLast());
+                            addEntry(bitcoin.getLast(), bitcoin.getPredicted());
                         }
                     }
                 });
@@ -253,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setCurrentPrice(float price, float predicted) {
         YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setAxisMaximum(price + 2000f);
-        leftAxis.setAxisMinimum(price - 2000f);
-        addEntry(price);
+        leftAxis.setAxisMaximum(price + 4000f);
+        leftAxis.setAxisMinimum(price - 4000f);
+        addEntry(price, predicted);
         Log.d("price", Float.toString(price));
         Log.d("predicted", Float.toString(predicted));
         currentPrice.setText("$" + price);

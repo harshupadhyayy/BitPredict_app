@@ -1,13 +1,20 @@
 package com.kekguy.bitcoinprice;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -15,6 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText bitcoins;
     private EditText money;
     private Button saveButton;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +36,29 @@ public class SettingsActivity extends AppCompatActivity {
         ArrayList<String> res = dbHandler.readBitcoinData();
         bitcoins.setText(res.get(0));
         money.setText(res.get(1));
+
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    //DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                    //drawerLayout.closeDrawer(GravityCompat.START);
+                    Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                if (item.getItemId() == R.id.nav_gallery) {
+                    Intent intent = new Intent(SettingsActivity.this, NewsActivity.class);
+                    startActivity(intent);
+
+                }
+                if (item.getItemId() == R.id.nav_portfolio) {
+                    DrawerLayout drawerLayout = findViewById(R.id.drawer_layout_settings);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                return true;
+            }
+        });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override

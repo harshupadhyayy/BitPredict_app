@@ -72,6 +72,10 @@ public class NewsActivity extends AppCompatActivity {
                     DrawerLayout drawerLayout = findViewById(R.id.drawer_layout_news);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
+                if (item.getItemId() == R.id.nav_portfolio) {
+                    Intent intent = new Intent(NewsActivity.this, SettingsActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             }
         });

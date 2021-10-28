@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
-    android:background="@color/background">
+    android:background="@color/background"
+    >
 
     <View
         android:id="@+id/viewHeaderBackground"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="@dimen/_50sdp"
         android:background="@color/colorDark"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,8 +30,8 @@
 
     <EditText
         android:id="@+id/bitcoins"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="57dp"
+        android:layout_width="@dimen/_190sdp"
+        android:layout_height="75dp"
         android:ems="10"
         android:inputType="text"
         android:text="0"
@@ -40,27 +41,28 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="140dp"
-        android:layout_height="57dp"
+        android:layout_width="160dp"
+        android:layout_height="75dp"
         android:text="Enter current \nbitcoins owned"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toStartOf="@+id/bitcoins"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground" />
+        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground"
+        android:padding="@dimen/_8sdp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="151dp" />
+        app:layout_constraintGuide_begin="178dp" />
 
     <EditText
         android:id="@+id/money"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="57dp"
+        android:layout_width="@dimen/_190sdp"
+        android:layout_height="75dp"
         android:ems="10"
         android:inputType="text"
         android:text="0"
@@ -70,15 +72,16 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="140dp"
-        android:layout_height="57dp"
+        android:layout_width="160dp"
+        android:layout_height="75dp"
         android:text="Enter money \ninvested (in $)"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toStartOf="@+id/money"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline3"
+        android:padding="@dimen/_8sdp"/>
 
     <Button
         android:id="@+id/saveButton"
@@ -94,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="222dp" />
+        app:layout_constraintGuide_begin="270dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
