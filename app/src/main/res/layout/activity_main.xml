@@ -7,12 +7,17 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
+
     <View
         android:id="@+id/viewHeaderBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
         android:background="@color/colorDark"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
 
     <TextView
         android:id="@+id/textTitle"
@@ -26,6 +31,7 @@
         android:textSize="@dimen/_20sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
